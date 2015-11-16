@@ -22,11 +22,5 @@
         android:layout_above="@+id/AddItem"
         android:layout_alignParentTop="true"/>
 
-    <Button
-        android:id="@+id/DeleteItem"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:text="Delete item"
-        android:layout_alignBaseline="@+id/AddItem"
-        android:layout_toRightOf="@+id/AddItem"/>
+
 </RelativeLayout>
