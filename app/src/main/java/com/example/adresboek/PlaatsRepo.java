@@ -77,7 +77,7 @@ public class PlaatsRepo {
         String selectQuery = "SELECT " +
                 Plaats.KEY_ID + "," +
                 Plaats.KEY_name + "," +
-                Plaats.KEY_adres + "," +
+                Plaats.KEY_adres +
                 " FROM " + Plaats.TABLE +
                 " WHERE " + Plaats.KEY_ID + "= ?";
 

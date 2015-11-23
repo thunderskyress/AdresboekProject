@@ -15,10 +15,10 @@ public class DBHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        String CREATE_TABLE_PLAATS = "CREATE TABLE" + Plaats.TABLE + "("
-                + Plaats.KEY_ID + "INTEGER PRIMARY KEY AUTOINCREMENT,"
-                + Plaats.KEY_name + "TEXT,"
-                + Plaats.KEY_adres + "TEXT)";
+        String CREATE_TABLE_PLAATS = "CREATE TABLE " + Plaats.TABLE + "("
+                + Plaats.KEY_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, "
+                + Plaats.KEY_name + " TEXT, "
+                + Plaats.KEY_adres + " TEXT)";
 
         db.execSQL(CREATE_TABLE_PLAATS);
 

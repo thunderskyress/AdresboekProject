@@ -62,6 +62,7 @@ public class AdresDetail extends ActionBarActivity implements android.view.View.
                 repo.update(plaats);
                 Toast.makeText(this, "Plaats update",Toast.LENGTH_SHORT).show();
             }
+            finish();
         } else if (v == findViewById(R.id.DeleteBtn)){
             PlaatsRepo repo = new PlaatsRepo(this);
             repo.delete(_Plaats_Id);
@@ -71,4 +72,6 @@ public class AdresDetail extends ActionBarActivity implements android.view.View.
             finish();
         }
     }
+
+
 }
