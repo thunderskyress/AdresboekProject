@@ -64,6 +64,11 @@ public class AdresDetail extends ActionBarActivity implements android.view.View.
             }
         } else if (v == findViewById(R.id.DeleteBtn)){
             PlaatsRepo repo = new PlaatsRepo(this);
+            repo.delete(_Plaats_Id);
+            Toast.makeText(this,"Plaats deleted",Toast.LENGTH_SHORT).show();
+            finish();
+        } else if (v == findViewById(R.id.CloseBtn)){
+            finish();
         }
     }
 }
