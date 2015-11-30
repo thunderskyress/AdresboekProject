@@ -70,6 +70,16 @@
         android:layout_toLeftOf="@+id/SaveBtn"
         android:text="Delete"/>
 
+    <Button
+        android:id="@+id/MapBtn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/CloseBtn"
+        android:layout_alignParentRight="true"
+        android:text="Weergeven op Map"/>
+
+
+
 
 
 

@@ -33,9 +33,6 @@ public class MainActivity extends ListActivity implements android.view.View.OnCl
         btnAdd = (Button) findViewById(R.id.AddItem);
         btnAdd.setOnClickListener(this);
 
-        btnRefresh = (Button) findViewById(R.id.Refresh);
-        btnRefresh.setOnClickListener(this);
-
     }
 
 

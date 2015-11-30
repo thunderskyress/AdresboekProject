@@ -9,11 +9,12 @@ import android.view.MenuItem;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.TextView;
 import android.widget.Toast;
 
 public class AdresDetail extends ActionBarActivity implements android.view.View.OnClickListener {
 
-    Button btnSave, btnDelete, btnClose;
+    Button btnSave, btnDelete, btnClose,btnMap;
     EditText editTextName, editTextAdres;
     private int _Plaats_Id = 0;
 
@@ -26,6 +27,7 @@ public class AdresDetail extends ActionBarActivity implements android.view.View.
         btnSave = (Button) findViewById(R.id.SaveBtn);
         btnClose = (Button) findViewById(R.id.CloseBtn);
         btnDelete = (Button) findViewById(R.id.DeleteBtn);
+        btnMap  = (Button) findViewById(R.id.MapBtn);
 
         editTextName = (EditText) findViewById(R.id.TagEditText);
         editTextAdres = (EditText) findViewById(R.id.AdresEditText);
@@ -33,6 +35,7 @@ public class AdresDetail extends ActionBarActivity implements android.view.View.
         btnSave.setOnClickListener(this);
         btnDelete.setOnClickListener(this);
         btnClose.setOnClickListener(this);
+        btnMap.setOnClickListener(this);
 
         _Plaats_Id = 0;
         Intent intent = getIntent();
@@ -70,6 +73,13 @@ public class AdresDetail extends ActionBarActivity implements android.view.View.
             finish();
         } else if (v == findViewById(R.id.CloseBtn)){
             finish();
+        } else if (v == findViewById(R.id.MapBtn)){
+            TextView plaats_id;
+
+
+            Intent  intent = new Intent(this,MapsActivity.class);
+
+            startActivity(intent);
         }
     }
 
