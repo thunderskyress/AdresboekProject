@@ -74,11 +74,13 @@ public class AdresDetail extends ActionBarActivity implements android.view.View.
         } else if (v == findViewById(R.id.CloseBtn)){
             finish();
         } else if (v == findViewById(R.id.MapBtn)){
-            TextView plaats_id;
-
+            String tagname,location;
+            tagname = editTextName.getText().toString();
+            location = editTextAdres.getText().toString();
 
             Intent  intent = new Intent(this,MapsActivity.class);
-
+            intent.putExtra("name",tagname);
+            intent.putExtra("location",location);
             startActivity(intent);
         }
     }
