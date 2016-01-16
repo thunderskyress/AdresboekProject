@@ -9,6 +9,7 @@ import android.support.v4.app.FragmentActivity;
 import android.os.Bundle;
 import android.util.Log;
 import android.location.Geocoder;
+import android.widget.TextView;
 
 import com.google.android.gms.common.ConnectionResult;
 import com.google.android.gms.common.api.GoogleApiClient;
@@ -41,12 +42,19 @@ public class MapsActivity extends FragmentActivity implements
 
     private GoogleApiClient mGoogleApiClient;
     private LocationRequest mLocationRequest;
+    TextView _addressText;
+    Location _currentLocation;
+    LocationManager _locationmanager;
+
+
+
 
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_maps);
+
         setUpMapIfNeeded();
 
 
@@ -61,6 +69,8 @@ public class MapsActivity extends FragmentActivity implements
         super.onResume();
         setUpMapIfNeeded();
         mGoogleApiClient.connect();
+
+
     }
 
     /**
@@ -91,6 +101,7 @@ public class MapsActivity extends FragmentActivity implements
         }
     }
 
+
     /**
      * This is where we can add markers or lines, add listeners or move the camera. In this case, we
      * just add a marker near Africa.
@@ -99,7 +110,10 @@ public class MapsActivity extends FragmentActivity implements
      */
     private void setUpMap() {
 
-        mMap.addMarker(new MarkerOptions().position(new LatLng(0, 0)).title("Marker"));
+        LatLng latLng = new LatLng(50.928901,5.395001);
+        mMap.addMarker(new MarkerOptions().position(latLng).title("Current Location"));
+        float zoom = 12;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
     private void  handleNewLocation(Location location){
@@ -112,7 +126,7 @@ public class MapsActivity extends FragmentActivity implements
 
         MarkerOptions options = new MarkerOptions().position(latLng).title("You are here");
         mMap.addMarker(options);
-        float zoom = 16;
+        float zoom = 12;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
 
@@ -124,18 +138,9 @@ public class MapsActivity extends FragmentActivity implements
         Intent intent = getIntent();
         String tagname = intent.getStringExtra("name");
         String location1 = intent.getStringExtra("location");
-
+        
         Geocoder geocoder = new Geocoder(this,Locale.getDefault());
-        try {
-            List<Address> adres =  geocoder.getFromLocationName(location1, 1);
-        /*    Barcode.GeoPoint p = new Barcode.GeoPoint(
-                    (int) (adres.get(0).getLatitude() * 1E6),
-                    (int) (adres.get(0).getLongitude() * 1E6));
 
-*/
-        } catch (IOException e) {
-            e.printStackTrace();
-        }
 
         double adresLong = location.getLongitude();
         double adresLat = location.getLatitude();
