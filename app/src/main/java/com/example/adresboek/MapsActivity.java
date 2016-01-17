@@ -66,9 +66,44 @@ public class MapsActivity extends FragmentActivity implements
 
     @Override
     protected void onResume() {
+
         super.onResume();
         setUpMapIfNeeded();
         mGoogleApiClient.connect();
+
+        Address adres = null;
+        Intent intent = getIntent();
+        String location = new String();
+        List<Address> addresses = null;
+        Bundle extras = getIntent().getExtras();
+        if (extras == null){}
+        else {
+            location = extras.getString("location");
+        }
+
+        Geocoder geocoder = new Geocoder(this, Locale.getDefault());
+        try {
+           addresses =  geocoder.getFromLocationName(location, 1);
+        } catch (IOException e) {
+           String errorMessage = "Service not available";
+            Log.e(TAG, errorMessage, e);
+        }
+
+        if (addresses != null && addresses.size() > 0){
+            adres = addresses.get(0);
+        }
+
+        //LatLng latLng = new LatLng(51.096366,5.530642);
+        LatLng latLng = new LatLng(adres.getLatitude(),adres.getLongitude());
+        mMap.addMarker(new MarkerOptions().position(latLng).title(extras.getString("name")));
+        float zoom = 11;
+        mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
+
+
+
+
+
+
 
 
     }
@@ -112,7 +147,7 @@ public class MapsActivity extends FragmentActivity implements
 
         LatLng latLng = new LatLng(50.928901,5.395001);
         mMap.addMarker(new MarkerOptions().position(latLng).title("Current Location"));
-        float zoom = 12;
+        float zoom = 11;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
     }
 
@@ -126,7 +161,7 @@ public class MapsActivity extends FragmentActivity implements
 
         MarkerOptions options = new MarkerOptions().position(latLng).title("You are here");
         mMap.addMarker(options);
-        float zoom = 12;
+        float zoom = 11;
         mMap.moveCamera(CameraUpdateFactory.newLatLngZoom(latLng, zoom));
 
 
@@ -138,7 +173,7 @@ public class MapsActivity extends FragmentActivity implements
         Intent intent = getIntent();
         String tagname = intent.getStringExtra("name");
         String location1 = intent.getStringExtra("location");
-        
+
         Geocoder geocoder = new Geocoder(this,Locale.getDefault());
 
 
