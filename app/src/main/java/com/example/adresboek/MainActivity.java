@@ -35,8 +35,6 @@ public class MainActivity extends ListActivity implements android.view.View.OnCl
 
     }
 
-
-
     @Override
     public void onClick(View v) {
         if (v == findViewById(R.id.AddItem)){
